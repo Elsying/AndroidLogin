@@ -9,7 +9,7 @@ import dao.UserdaoImpl;
 import java.sql.SQLException;
 
 public class Userservice {
-    Userdao userdao=  UserdaoFactory.getUserdaoInstance();    //用工厂模式创建对象， 可以用spring解耦（以后优化）
+    private Userdao userdao=  UserdaoFactory.getUserdaoInstance();    //用工厂模式创建对象， 可以用spring解耦（以后优化）
     private final static String ERROR = "密码错误！";
     private final static String SUCCESS = "登陆成功！";
     private final static String ERROR_A = "用户名不存在！";
@@ -74,7 +74,7 @@ public class Userservice {
         User p = userdao.findpass(password);   //查找密码
         if (u==null&&p==null){
             User ne=new User();     //这里不好0.0
-            ne.setUsername(account);
+            ne.setAccount(account);
             ne.setPassword(password);
             userdao.add(ne);
             return SUCCESS_R;
@@ -90,6 +90,8 @@ public class Userservice {
 
 
     }
+
+    //搜索
 
 
 

@@ -15,6 +15,7 @@ public class SearchServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        String name=request.getParameter("username");
+        String account=request.getParameter("account");
+        System.out.println(account);
     }
 }

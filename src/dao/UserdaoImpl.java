@@ -48,7 +48,7 @@ public class UserdaoImpl implements Userdao {
 
     //查找密码
     public User findpass(String password) {
-        String sql = "select * from user_list where password=? ";
+        String sql = "select * from user_list where password=?";
         try {
 //            if(qr.query(sql, new BeanHandler<User>(User.class),password)==null){
 //                return null;
