@@ -20,9 +20,9 @@ public class ResignServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 设置编码形式
         request.setCharacterEncoding("utf-8");
-        String name=request.getParameter("username");
+        String account=request.getParameter("account");
         String pass=request.getParameter("password");
-        String res=userservice.Resign(name,pass);
+        String res=userservice.Resign(account,pass);
 
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");

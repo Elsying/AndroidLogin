@@ -20,8 +20,8 @@ public class UserdaoImpl implements Userdao {
 
     //插入
     public void add(User u) {
-        String sql = "insert into user_list(username,password) values(?,?)";
-        Object[] params = {u.getUsername(), u.getPassword()
+        String sql = "insert into user_list(account,password) values(?,?)";
+        Object[] params = {u.getAccount(), u.getPassword()
         };
         try {
             qr.update(sql, params);
@@ -30,15 +30,15 @@ public class UserdaoImpl implements Userdao {
         }
     }
 
-    //查找用户名
-    public User finduser(String username) {
-        String sql = "select * from user_list where username=? ";
+    //查找账号
+    public User finduser(String account) {
+        String sql = "select * from user_list where account=? ";
         System.out.println("find");
         try {
 //            if((nr.query(sql, new BeanHandler<User>(User.class),username))==null) {
 //                return null;
 //            }else {
-                return  qr.query(sql, new BeanHandler<User>(User.class), username);
+                return  qr.query(sql, new BeanHandler<User>(User.class), account);
 
         } catch (SQLException e) {
             //System.out.print("MY");
@@ -62,14 +62,14 @@ public class UserdaoImpl implements Userdao {
     }
 
     //查找
-    public User find(String username,String password) {
-        String sql = "select * from user_list where username=? and password=? ";
+    public User find(String account,String password) {
+        String sql = "select * from user_list where account=? and password=? ";
         try {
 //            if (nr.query(sql, new BeanHandler<User>(User.class),username,password)==null){
 //                return null;
 //            }
 //            else
-                return qr.query(sql, new BeanHandler<User>(User.class), username,password);
+                return qr.query(sql, new BeanHandler<User>(User.class), account,password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

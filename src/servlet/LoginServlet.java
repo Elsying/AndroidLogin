@@ -22,12 +22,12 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 设置编码形式
-        request.setCharacterEncoding("utf-8");
-        String name=request.getParameter("username");
+        request.setCharacterEncoding("UTF-8");
+        String account=request.getParameter("account");
         String pass=request.getParameter("password");
-        System.out.println(name);
+        System.out.println(account);
         System.out.println(pass);
-        String res=userservice.Login(name,pass);
+        String res=userservice.Login(account,pass);
 
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");

@@ -10,15 +10,15 @@ import java.sql.SQLException;
 
 public class Userservice {
     Userdao userdao=  UserdaoFactory.getUserdaoInstance();    //用工厂模式创建对象， 可以用spring解耦（以后优化）
-    public final static String ERROR = "密码错误！";
-    public final static String SUCCESS = "登陆成功！";
-    public final static String ERROR_A = "用户名不存在！";
+    private final static String ERROR = "密码错误！";
+    private final static String SUCCESS = "登陆成功！";
+    private final static String ERROR_A = "用户名不存在！";
 
-    public final static String ERROR_R = "注册失败，用户名已存在！";
-    public final static String SUCCESS_R = "注册成功！";
-    public final static String ERROR_Rb = "注册失败,密码已存在";
+    private final static String ERROR_R = "注册失败，用户名已存在！";
+    private final static String SUCCESS_R = "注册成功！";
+    private final static String ERROR_Rb = "注册失败,密码已存在";
 
-    public final static String ERROR_S = "未知错误";
+    private final static String ERROR_S = "未知错误";
 
 
     //注册
@@ -28,9 +28,9 @@ public class Userservice {
 //    }
 
     //注册查找是否存在
-    public User finduser(String username)
+    public User finduser(String account)
     {
-        return userdao.finduser(username);
+        return userdao.finduser(account);
     }
 
 
@@ -49,9 +49,9 @@ public class Userservice {
 
     //登录验证
     //登录成功  密码错误   500为用户名不存在查找数据库异常
-    public String Login(String username,String password) {
-        User r=userdao.find(username,password);
-        User u = userdao.finduser(username);   //查找账号
+    public String Login(String account,String password) {
+        User r=userdao.find(account,password);
+        User u = userdao.finduser(account);   //查找账号
         User p = userdao.findpass(password);   //查找密码
 
         if(r!=null){
@@ -68,13 +68,13 @@ public class Userservice {
     }
 
     //注册
-    public String Resign(String username, String password){
+    public String Resign(String account, String password){
         //User up=userdao.find(username,password);
-        User u = userdao.finduser(username);   //查找账号
+        User u = userdao.finduser(account);   //查找账号
         User p = userdao.findpass(password);   //查找密码
         if (u==null&&p==null){
             User ne=new User();     //这里不好0.0
-            ne.setUsername(username);
+            ne.setUsername(account);
             ne.setPassword(password);
             userdao.add(ne);
             return SUCCESS_R;

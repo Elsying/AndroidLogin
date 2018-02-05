@@ -4,9 +4,9 @@ import bean.User;
 
 public interface Userdao {
      void add(User u);
-     User finduser(String username);
+     User finduser(String account);
      User findpass(String password);
-     User find(String username,String password);
+     User find(String account,String password);
      void edit(User u);
 
 }
