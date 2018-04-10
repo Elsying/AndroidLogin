@@ -9,14 +9,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>下载文件显示页面</title>
+    <title>下载文件</title>
 </head>
-<body>
 <!-- 遍历Map集合 -->
+ <h4>文件列表：</h4>
      <c:forEach var="me" items="${fileNameMap}">
-
-              ${me.value}
-             <br />
-         </c:forEach>
+         <c:url value="/FileDownload" var="downurl">
+             <c:param name="filename" value="${me.key}"></c:param>
+         </c:url>
+        <ul>
+            <li> ${me.value}</li>
+            <a href="${downurl}">下载</a>
+        </ul>
+     </c:forEach>
 </body>
 </html>
